@@ -35,3 +35,4 @@
 /Users/karimmoustamid/Desktop/Code/Angular/Repo/ASP.NET-Core-and-Angular/src/Healcheck.Server/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/karimmoustamid/Desktop/Code/Angular/Repo/ASP.NET-Core-and-Angular/src/Healcheck.Server/bin/Debug/net9.0/Microsoft.Extensions.FileSystemGlobbing.dll
 /Users/karimmoustamid/Desktop/Code/Angular/Repo/ASP.NET-Core-and-Angular/src/Healcheck.Server/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/Users/karimmoustamid/Desktop/Code/Angular/Repo/ASP.NET-Core-and-Angular/src/Healcheck.Server/obj/Debug/net9.0/Healcheck.Server.sourcelink.json
