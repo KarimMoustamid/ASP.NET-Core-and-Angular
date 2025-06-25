@@ -3,14 +3,52 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // Angular dev server URL
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "wwwroot";
+});
+
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseCors("AllowAngularApp");
 }
+
+// ! Fix the SPA configuration 
+//const string AngularUrl = "http://localhost:4200";
+//if (app.Environment.IsDevelopment())
+//{
+//    app.MapOpenApi();
+//    app.UseCors("AllowAngularApp");
+//    app.UseSpa(spa =>
+//    {
+//        spa.UseProxyToSpaDevelopmentServer(AngularUrl);
+//    });
+//}
+//else
+//{
+//    app.UseSpaStaticFiles();
+//    app.UseSpa(spa =>
+//    {
+//        spa.Options.SourcePath = "wwwroot";
+//    });
+//}
 
 app.UseHttpsRedirection();
 
