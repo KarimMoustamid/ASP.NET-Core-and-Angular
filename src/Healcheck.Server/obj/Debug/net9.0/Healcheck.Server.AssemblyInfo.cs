@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Healcheck.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f18829012a1eacd1c5a0dcfa7fbb3b76e3d904d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+452c5b4377c7574b274ccc6ca6f8a3a406817dd0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Healcheck.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Healcheck.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

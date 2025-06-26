@@ -1,19 +1,4 @@
-<main class="main">
-  <div class="content">
-    <h1>{{ title }}</h1>
-    <div *ngIf="weatherData.length > 0; else loading">
-      <ul>
-        <li *ngFor="let forecast of weatherData">
-          <p>Date: {{ forecast.date }}</p>
-          <p>Temperature (C): {{ forecast.temperatureC }}°C</p>
-          <p>Temperature (F): {{ forecast.temperatureF }}°F</p>
-          <p>Summary: {{ forecast.summary }}</p>
-        </li>
-      </ul>
-    </div>
-    <ng-template #loading>
-      <p>Loading weather data...</p>
-    </ng-template>
-  </div>
-</main>
-<router-outlet />
+<app-nav-menu></app-nav-menu>
+<div class="container">
+  <router-outlet />
+</div>

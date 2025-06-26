@@ -1,1 +1,15 @@
-<p>fetch-data works!</p>
+  <div>
+    <div *ngIf="weatherData.length > 0; else loading">
+      <ul>
+        <li *ngFor="let forecast of weatherData">
+          <p>Date: {{ forecast.date }}</p>
+          <p>Temperature (C): {{ forecast.temperatureC }}°C</p>
+          <p>Temperature (F): {{ forecast.temperatureF }}°F</p>
+          <p>Summary: {{ forecast.summary }}</p>
+        </li>
+      </ul>
+    </div>
+    <ng-template #loading>
+      <p>Loading weather data...</p>
+    </ng-template>
+  </div>
