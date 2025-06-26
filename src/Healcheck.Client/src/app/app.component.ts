@@ -2,10 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {NgForOf, NgIf} from '@angular/common';
+import {HomeComponent} from './home/home.component';
+import {FetchDataComponent} from './fetch-data/fetch-data.component';
+import {NavMenuComponent} from './nav-menu/nav-menu.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgIf, NgForOf],
+  standalone: true,
+  imports: [RouterOutlet, NgIf, NgForOf, HomeComponent, FetchDataComponent, NavMenuComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'] // Fixed property name
 })
