@@ -13,42 +13,19 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
-builder.Services.AddSpaStaticFiles(configuration =>
-{
-    configuration.RootPath = "wwwroot";
-});
 
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseCors("AllowAngularApp");
 }
 
-// ! Fix the SPA configuration 
-//const string AngularUrl = "http://localhost:4200";
-//if (app.Environment.IsDevelopment())
-//{
-//    app.MapOpenApi();
-//    app.UseCors("AllowAngularApp");
-//    app.UseSpa(spa =>
-//    {
-//        spa.UseProxyToSpaDevelopmentServer(AngularUrl);
-//    });
-//}
-//else
-//{
-//    app.UseSpaStaticFiles();
-//    app.UseSpa(spa =>
-//    {
-//        spa.Options.SourcePath = "wwwroot";
-//    });
-//}
+// Apply CORS policy
+app.UseCors("AllowAngularApp");
 
 app.UseHttpsRedirection();
 
