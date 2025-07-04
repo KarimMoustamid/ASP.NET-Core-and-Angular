@@ -3,31 +3,31 @@ namespace Healcheck.Server
     using System.Net.NetworkInformation;
     using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-    public class ICMPHealthCheck : IHealthCheck
+    public class ICMPHealthCheck(string host, int healthyRoundtripTime) : IHealthCheck
     {
-        private readonly string Host = $"10.0.0.0";
-        private readonly int HealthyRoundtripTime = 300; 
-        
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             try
             {
                 using var ping = new Ping();
-                var reply = await ping.SendPingAsync(Host);
+                var reply = await ping.SendPingAsync(host);
 
                 switch (reply.Status)
                 {
-                    case IPStatus.Success: 
-                        return (reply.RoundtripTime > HealthyRoundtripTime)
-                            ? HealthCheckResult.Degraded($"Ping to {Host} took too long: {reply.RoundtripTime}ms")
-                            : HealthCheckResult.Healthy($"Ping to {Host} successful: {reply.RoundtripTime}ms");
+                    case IPStatus.Success:
+                        var msg = $"ICMP ping to {host} took {reply.RoundtripTime}ms";
+                        return (reply.RoundtripTime > healthyRoundtripTime)
+                            ? HealthCheckResult.Degraded(msg)
+                            : HealthCheckResult.Healthy(msg);
                     default:
-                        return HealthCheckResult.Unhealthy($"Ping to {Host} failed: {reply.Status}");
+                        var err = $"Ping to {host} failed: {reply.Status}";
+                        return HealthCheckResult.Unhealthy(err);
                 }
             }
             catch (Exception e)
             {
-                return HealthCheckResult.Unhealthy($"Ping to {Host} failed: {e}");
+                var err = $"Ping to {host} failed: {e.Message}";
+                return HealthCheckResult.Unhealthy(err);
             }
         }
     }
