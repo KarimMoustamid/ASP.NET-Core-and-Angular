@@ -15,8 +15,9 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
-builder.Services.AddHealthChecks().AddCheck<ICMPHealthCheck>("ICMP Health Check");
-
+builder.Services.AddHealthChecks()
+    .AddCheck("ICMP Health Check  to google.com", new ICMPHealthCheck("www.google.com", 100))
+    .AddCheck("ICMP Health Check to ", new ICMPHealthCheck($"www.{Guid.NewGuid():N}.com", 100)); 
 
 
 var app = builder.Build();
@@ -31,7 +32,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAngularApp");
 
 app.UseHttpsRedirection();
-app.UseHealthChecks("/api/health");
+app.UseHealthChecks(new PathString("/api/health"), new CustomHealthCheckOptions());
 
 var summaries = new[]
 {
