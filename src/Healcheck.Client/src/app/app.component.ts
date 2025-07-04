@@ -9,8 +9,9 @@ import {NavMenuComponent} from './nav-menu/nav-menu.component';
   standalone: true,
   imports: [RouterOutlet, HomeComponent, FetchDataComponent, NavMenuComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] // Fixed property name
+  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Healcheck.Client';
   constructor() {}
