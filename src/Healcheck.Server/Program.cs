@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddHealthChecks()
     .AddCheck("ICMP Health Check  to google.com", new ICMPHealthCheck("www.google.com", 100))
-    .AddCheck("ICMP Health Check to ", new ICMPHealthCheck($"www.{Guid.NewGuid():N}.com", 100)); 
+    .AddCheck("ICMP Health Check to random guid ", new ICMPHealthCheck($"www.{Guid.NewGuid():N}.com", 100));
 
 
 var app = builder.Build();
@@ -41,7 +41,7 @@ var summaries = new[]
 
 app.MapGet("api/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
