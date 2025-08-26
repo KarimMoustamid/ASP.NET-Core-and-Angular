@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {FetchDataComponent} from './fetch-data/fetch-data.component';
-import {NavMenuComponent} from './nav-menu/nav-menu.component';
+import { NavMenuComponent } from './Layout/nav-menu/nav-menu.component';
 
 @Component({
   selector: 'app-root',
